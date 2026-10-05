@@ -7,7 +7,7 @@ datasource db {
   provider = "postgresql"
 }
 
-// Начальная модель для настройки ORM. Модель бронирований добавляется отдельно.
+// Начальная модель для настройки ORM.
 enum Role {
   EMPLOYEE
   RESPONSIBLE
