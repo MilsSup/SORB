@@ -1,0 +1,24 @@
+{
+  "name": "sorb",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "engines": { "node": "^22.12.0 || ^24.0.0" },
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "lint": "npm run lint -w frontend",
+    "test": "npm run test -w backend",
+    "postinstall": "npm run prisma:generate -w backend",
+    "db:up": "docker compose up -d --wait db",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f db",
+    "db:migrate": "npm run prisma:migrate -w backend",
+    "db:deploy": "npm run prisma:deploy -w backend",
+    "db:studio": "npm run prisma:studio -w backend",
+    "docker:up": "docker compose --profile app up -d --build --wait",
+    "docker:down": "docker compose --profile app down"
+  },
+  "devDependencies": { "concurrently": "^9.2.0" }
+}
