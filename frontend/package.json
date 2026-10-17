@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",
+    "test": "node --experimental-strip-types --test tests/timeline.test.ts",
     "preview": "vite preview"
   },
   "dependencies": {

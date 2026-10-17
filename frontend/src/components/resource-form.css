@@ -1,0 +1,76 @@
+.rf-dialog { position: fixed; inset: 0; width: 760px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 48px); margin: auto; padding: 0; overflow: auto; border: 1px solid var(--line); border-radius: 15px; color: var(--text); background: var(--surface); box-shadow: 0 24px 100px #14251c38; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.rf-dialog::backdrop { background: #17271d77; backdrop-filter: blur(3px); }
+.rf-dialog-content { min-width: 0; }
+.rf-header { display: flex; align-items: flex-start; gap: 15px; padding: 22px 26px; border-bottom: 1px solid var(--line); }
+.rf-heading-icon { display: grid; place-items: center; flex-shrink: 0; width: 45px; height: 45px; border: 1px solid color-mix(in srgb, var(--brand), transparent 80%); border-radius: 12px; background: var(--brand-soft); color: var(--brand); }
+.rf-header .eyebrow { font-size: 8px; letter-spacing: 1.5px; }
+.rf-header h2 { margin-top: 5px; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -.6px; }
+.rf-header p { margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.rf-close { margin: -5px -7px 0 auto; }
+.rf-form-body { padding: 0 26px; }
+.rf-section { padding: 20px 0; }
+.rf-section + .rf-section { border-top: 1px solid var(--line); }
+.rf-section-heading { display: flex; gap: 11px; align-items: baseline; margin-bottom: 16px; }
+.rf-section-heading > span { flex-shrink: 0; color: var(--muted); font-size: 10px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.rf-section-heading h3 { font-size: 14px; font-weight: 600; letter-spacing: -.1px; }
+.rf-section-heading p { margin-top: 5px; color: var(--muted); font-size: 10px; line-height: 1.6; }
+.rf-field.field { margin: 16px 0 0; gap: 8px; }
+.rf-required { position: absolute; right: 0; top: 0; color: var(--muted); font-size: 9px; font-weight: 400; }
+.rf-field .optional { position: absolute; right: 0; top: 0; font-size: 9px; color: var(--muted); font-weight: 400; }
+.rf-field input::placeholder, .rf-field textarea::placeholder { color: var(--muted); opacity: .8; }
+.rf-field textarea { line-height: 1.65; }
+.rf-field input, .rf-field textarea, .rf-field select { font-size: 12px; min-height: 40px; }
+.rf-field input:focus, .rf-field textarea:focus, .rf-field select:focus { border-color: var(--brand); }
+.rf-hint { color: var(--muted); font-size: 10px; font-weight: 400; line-height: 1.7; }
+.rf-type-fieldset, .rf-choice-fieldset, .rf-groups, .rf-days { min-width: 0; padding: 0; margin: 18px 0 0; border: 0; }
+.rf-type-fieldset legend, .rf-choice-fieldset legend, .rf-days legend { margin-bottom: 10px; font-size: 11px; font-weight: 500; }
+.rf-types { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.rf-type { position: relative; display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 58px; padding: 12px 7px; cursor: pointer; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); font-size: 10px; transition: background .15s, border-color .15s, color .15s; }
+.rf-type input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.rf-type:hover { background: var(--surface-soft); }
+.rf-type-selected { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); font-weight: 600; }
+.rf-type:focus-within { outline: 2px solid var(--brand); outline-offset: 3px; }
+.rf-groups { display: flex; flex-wrap: wrap; gap: 8px; }
+.rf-group { display: flex; align-items: center; gap: 7px; min-height: 35px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 6px; cursor: pointer; color: var(--muted); font-size: 10px; }
+.rf-group:hover { background: var(--surface-soft); }
+.rf-group-selected { background: var(--brand-soft); color: var(--brand); border-color: color-mix(in srgb, var(--brand), transparent 65%); }
+.rf-group input, .rf-choice-row input, .rf-days input { width: 14px; height: 14px; margin: 0; accent-color: var(--brand); }
+.rf-text-button { display: inline-flex; align-items: center; gap: 5px; color: var(--brand); font-size: 10px; font-weight: 500; border-radius: 4px; padding: 5px 0; }
+.rf-text-button:hover { text-decoration: underline; text-underline-offset: 3px; }
+.rf-create-group { margin-top: 9px; }
+.rf-add-group { padding: 14px; margin-top: 13px; border: 1px dashed var(--line); border-radius: 8px; background: var(--surface-soft); }
+.rf-add-group .rf-field { margin-top: 0; }
+.rf-add-group-actions { display: flex; align-items: center; gap: 13px; margin: 10px 0 7px; }
+.rf-error { font-size: 10px; line-height: 1.6; color: var(--red); margin-bottom: 6px; }
+.rf-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+.rf-columns > :only-child { grid-column: 1 / -1; }
+.rf-choice-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 23px; }
+.rf-choice-row label { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; color: var(--text); cursor: pointer; }
+.rf-placement-note { margin-top: 17px; }
+.rf-placement-note svg { color: var(--brand); margin-top: 2px; }
+.rf-custom-schedule { margin-top: 14px; padding: 15px; border-radius: 8px; background: var(--surface-soft); }
+.rf-days { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; }
+.rf-days label { display: inline-flex; align-items: center; gap: 5px; padding: 6px 7px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); cursor: pointer; font-size: 10px; }
+.rf-timezone { display: flex; align-items: center; gap: 6px; margin-top: 12px; }
+.rf-footer { position: sticky; bottom: 0; padding: 16px 26px; border-top: 1px solid var(--line); background: var(--surface); box-shadow: 0 -6px 16px color-mix(in srgb, var(--bg), transparent 30%); z-index: 1; }
+.rf-footer-row { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+.rf-save-error { display: flex; align-items: flex-start; gap: 8px; padding: 10px 12px; margin-bottom: 12px; border-radius: 6px; color: var(--amber); background: var(--amber-soft); font-size: 11px; line-height: 1.7; }
+.rf-save-error svg { margin-top: 1px; flex-shrink: 0; }
+@media (max-width: 600px) {
+  .rf-dialog { max-width: calc(100vw - 20px); max-height: calc(100dvh - 20px); border-radius: 12px; }
+  .rf-header { padding: 21px 19px 20px; gap: 11px; }
+  .rf-heading-icon { width: 38px; height: 38px; border-radius: 9px; }
+  .rf-header h2 { font-size: 21px; }
+  .rf-header .eyebrow { font-size: 7px; letter-spacing: 1.1px; }
+  .rf-header p { font-size: 10px; max-width: 230px; }
+  .rf-form-body { padding: 0 19px; }
+  .rf-section { padding-block: 21px; }
+  .rf-types { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rf-type { min-height: 46px; }
+  .rf-columns { grid-template-columns: 1fr; gap: 0; }
+  .rf-custom-schedule .rf-columns { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rf-footer { padding: 14px 19px; }
+  .rf-footer-row { gap: 8px; }
+  .rf-footer-row .button-primary { flex: 1; }
+  .rf-field .optional { font-size: 8px; }
+}
