@@ -3,7 +3,7 @@
 .ac-account-content button, .ac-auth button, .ac-dialog button, .ac-account-content input, .ac-auth input, .ac-dialog input, .ac-dialog select { font: inherit; }
 .ac-button { min-height: 41px; padding: 10px 16px; border: 1px solid transparent; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; font-weight: 650; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background .18s, border-color .18s, transform .18s; }
 .ac-button:hover { transform: translateY(-1px); }
-.ac-button:focus-visible, .ac-icon-button:focus-visible, .ac-auth a:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+.ac-button:focus-visible, .ac-icon-button:focus-visible, .ac-auth a:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
 .ac-button-primary { color: var(--button-text, var(--surface)); background: var(--brand); }
 .ac-button-primary:hover { background: color-mix(in srgb, var(--brand) 88%, #000); }
 .ac-button-outline { background: var(--surface); color: var(--text); border-color: var(--line); }
@@ -32,10 +32,10 @@
 .ac-org-card { display: flex; flex-direction: column; min-width: 0; padding: 20px 22px 0; background: var(--surface); border: 1px solid var(--line); border-radius: 11px; overflow: hidden; }
 .ac-org-card-current { border-color: color-mix(in srgb, var(--brand) 36%, var(--line)); box-shadow: 0 3px 12px color-mix(in srgb, var(--brand) 3%, transparent); }
 .ac-org-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
-.ac-org-avatar { width: 58px; height: 58px; border-radius: 15px; background: var(--brand); display: flex; align-items: center; justify-content: center; color: var(--lime); font-size: 48px; font-weight: 750; line-height: 1; letter-spacing: -4px; padding-bottom: 8px; box-sizing: border-box; }
+.ac-org-avatar { width: 58px; height: 58px; border-radius: 15px; background: var(--brand); display: flex; align-items: center; justify-content: center; color: var(--button-text, var(--surface)); font-size: 48px; font-weight: 750; line-height: 1; letter-spacing: -4px; padding-bottom: 8px; box-sizing: border-box; }
 .ac-org-avatar > span { font-size: 31px; align-self: flex-end; margin-bottom: -1px; }
-.ac-org-avatar-amber { background: var(--amber-soft); color: var(--amber); font-size: 40px; }
-.ac-org-avatar-amber > span { font-size: 25px; align-self: center; margin-top: 10px; }
+.ac-org-avatar-lavender { background: var(--purple-soft); color: var(--purple); font-size: 40px; }
+.ac-org-avatar-lavender > span { font-size: 25px; align-self: center; margin-top: 10px; }
 .ac-current-badge { font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 20px; color: var(--brand); background: var(--brand-soft); }
 .ac-current-badge > span { width: 5px; height: 5px; background: var(--brand); border-radius: 50%; }
 .ac-org-timezone { color: var(--muted); font-size: 11px; }
@@ -56,7 +56,7 @@
 .ac-team-banner p { color: var(--muted); font-size: 11px; line-height: 1.7; margin-top: 6px; }
 .ac-organizations-help { padding: 16px 0 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
 .ac-dialog { position: fixed; inset: 0; margin: auto; width: min(calc(100vw - 32px), 525px); max-height: calc(100dvh - 32px); box-sizing: border-box; overflow-y: auto; background: var(--surface); border: 1px solid var(--line); color: var(--text); border-radius: 13px; padding: 24px; box-shadow: 0 24px 100px #0003; }
-.ac-dialog::backdrop { background: #0f261d66; backdrop-filter: blur(5px); }
+.ac-dialog::backdrop { background: #20202066; backdrop-filter: blur(5px); }
 .ac-dialog-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 19px; }
 .ac-icon-button { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 7px; background: transparent; color: var(--muted); cursor: pointer; }
 .ac-icon-button:hover { background: var(--surface-soft); color: var(--text); }
@@ -72,7 +72,7 @@
 .ac-profile-summary { background: var(--surface); border: 1px solid var(--line); border-radius: 13px; overflow: hidden; }
 .ac-profile-cover { height: 68px; background: var(--brand-soft); }
 .ac-profile-summary-body { padding: 0 24px 24px; }
-.ac-profile-avatar { width: 72px; height: 72px; background: #eee4d5; color: #795b3d; border: 5px solid var(--surface); border-radius: 50%; font-size: 22px; font-weight: 500; position: relative; display: flex; align-items: center; justify-content: center; margin-top: -34px; margin-left: -3px; }
+.ac-profile-avatar { width: 72px; height: 72px; background: var(--purple-soft); color: var(--purple); border: 5px solid var(--surface); border-radius: 50%; font-size: 22px; font-weight: 500; position: relative; display: flex; align-items: center; justify-content: center; margin-top: -34px; margin-left: -3px; }
 .ac-profile-summary h2 { font-size: 18px; font-weight: 600; letter-spacing: -.4px; margin-top: 13px; }
 .ac-profile-summary-body > p:not(.ac-summary-label) { font-size: 12px; margin: 8px 0 14px; color: var(--muted); }
 .ac-verified { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; color: var(--brand); }
@@ -102,37 +102,37 @@
 .ac-password-form > .ac-button { grid-column: 1 / -1; justify-self: end; }
 .ac-password-form > .ac-notice { grid-column: 1 / -1; }
 .ac-auth { background: var(--bg); min-height: 100dvh; display: grid; grid-template-columns: 49% 51%; color: var(--text); }
-.ac-auth-story { background: #204f3b; color: #fff; padding: 40px 50px 27px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.ac-auth-story { background: #272731; color: #fff; padding: 40px 50px 27px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
 .ac-auth-brand { display: inline-flex; position: relative; align-items: center; width: 170px; height: 48px; }
-.ac-auth-brand img { display: block; width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); }
+.ac-auth-brand > svg { display: block; width: 100%; height: 100%; }
 .ac-story-content { width: 100%; max-width: 460px; margin: auto; padding: 36px 0; }
-.ac-story-eyebrow { display: flex; align-items: center; gap: 8px; color: #d1e5be; font-size: 9px; letter-spacing: 1.8px; font-weight: 500; }
+.ac-story-eyebrow { display: flex; align-items: center; gap: 8px; color: #add8e3; font-size: 9px; letter-spacing: 1.8px; font-weight: 500; }
 .ac-auth h1 { margin-top: 24px; font-size: clamp(30px, 3vw, 46px); font-weight: 500; line-height: 1.2; letter-spacing: -2px; }
-.ac-auth h1 em { font-style: normal; color: #d4e5ac; }
-.ac-story-content > p { font-size: 13px; color: #c0d2c5; margin-top: 21px; line-height: 1.9; }
-.ac-story-footer { display: flex; justify-content: space-between; gap: 18px; font-size: 9px; color: #a1bba9; position: relative; }
+.ac-auth h1 em { font-style: normal; color: #add8e3; }
+.ac-story-content > p { font-size: 13px; color: #d5d5d9; margin-top: 21px; line-height: 1.9; }
+.ac-story-footer { display: flex; justify-content: space-between; gap: 18px; font-size: 9px; color: #aeacba; position: relative; }
 .ac-story-art { height: 326px; max-width: 420px; position: relative; margin-top: 30px; }
-.ac-art-card { position: absolute; background: #fffef8; border-radius: 13px; color: #2d4437; box-shadow: 0 18px 45px #092c3133; }
+.ac-art-card { position: absolute; background: #fafafb; border-radius: 13px; color: #202020; box-shadow: 0 18px 45px #20202033; }
 .ac-art-calendar { padding: 19px 19px 16px; width: min(100%, 350px); box-sizing: border-box; left: 0; top: 0; }
 .ac-art-card-head { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 650; margin-bottom: 19px; }
-.ac-art-card-head svg { color: #788a79; }
+.ac-art-card-head svg { color: #6c698b; }
 .ac-art-week, .ac-art-days { display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; }
-.ac-art-week { font-size: 7px; color: #899186; letter-spacing: .4px; margin-bottom: 10px; }
+.ac-art-week { font-size: 7px; color: #6c698b; letter-spacing: .4px; margin-bottom: 10px; }
 .ac-art-days { font-size: 10px; gap: 11px; margin-bottom: 17px; align-items: center; }
 .ac-art-days > span { width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; margin: auto; }
-.ac-art-day-current { background: #285c42; color: #fff; border-radius: 50%; }
-.ac-art-booking { display: flex; gap: 9px; padding: 10px 9px; background: #e8eddd; border-radius: 6px; align-items: center; margin-top: 6px; }
-.ac-art-booking-line { height: 27px; width: 2px; background: #719047; border-radius: 2px; }
+.ac-art-day-current { background: #307c8e; color: #fff; border-radius: 50%; }
+.ac-art-booking { display: flex; gap: 9px; padding: 10px 9px; background: #e2f0f3; border-radius: 6px; align-items: center; margin-top: 6px; }
+.ac-art-booking-line { height: 27px; width: 2px; background: #307c8e; border-radius: 2px; }
 .ac-art-booking b { display: block; font-size: 8px; font-weight: 650; }
-.ac-art-booking div > span { display: block; font-size: 7px; color: #7a8771; margin-top: 5px; }
-.ac-art-avatar { margin-left: auto; width: 22px; height: 22px; background: #d6dabb; color: #697644; display: flex; align-items: center; justify-content: center; font-size: 6px; border: 2px solid #fff; border-radius: 50%; }
-.ac-art-booking-muted { background: #f1ede3; }
-.ac-art-booking-muted .ac-art-booking-line { background: #b5a584; }
-.ac-art-resource { display: flex; align-items: center; gap: 11px; bottom: 0; right: 0; padding: 14px 17px; border: 1px solid #e3e7d9; }
-.ac-art-resource-icon { height: 37px; width: 37px; display: flex; align-items: center; justify-content: center; background: #f0efdf; border-radius: 9px; color: #77834b; }
+.ac-art-booking div > span { display: block; font-size: 7px; color: #4b4958; margin-top: 5px; }
+.ac-art-avatar { margin-left: auto; width: 22px; height: 22px; background: #add8e3; color: #2a6573; display: flex; align-items: center; justify-content: center; font-size: 6px; border: 2px solid #fff; border-radius: 50%; }
+.ac-art-booking-muted { background: #ebeaf1; }
+.ac-art-booking-muted .ac-art-booking-line { background: #6c698b; }
+.ac-art-resource { display: flex; align-items: center; gap: 11px; bottom: 0; right: 0; padding: 14px 17px; border: 1px solid #d5d5d9; }
+.ac-art-resource-icon { height: 37px; width: 37px; display: flex; align-items: center; justify-content: center; background: #ebeaf1; border-radius: 9px; color: #6c698b; }
 .ac-art-resource b { font-size: 10px; font-weight: 650; display: block; }
-.ac-art-resource div > span { font-size: 7px; display: flex; align-items: center; gap: 4px; margin-top: 7px; color: #788a79; }
-.ac-art-resource i { width: 4px; height: 4px; border-radius: 50%; background: #80a05e; }
+.ac-art-resource div > span { font-size: 7px; display: flex; align-items: center; gap: 4px; margin-top: 7px; color: #4b4958; }
+.ac-art-resource i { width: 4px; height: 4px; border-radius: 50%; background: #307c8e; }
 .ac-auth-form-side { padding: 42px 50px 25px; display: flex; flex-direction: column; }
 .ac-auth-top { display: flex; justify-content: flex-end; align-items: center; gap: 10px; font-size: 11px; color: var(--muted); }
 .ac-auth-top a { display: inline-flex; align-items: center; gap: 5px; color: var(--brand); text-decoration: none; font-weight: 600; }

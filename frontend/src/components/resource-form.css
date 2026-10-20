@@ -1,5 +1,5 @@
-.rf-dialog { position: fixed; inset: 0; width: 760px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 48px); margin: auto; padding: 0; overflow: auto; border: 1px solid var(--line); border-radius: 15px; color: var(--text); background: var(--surface); box-shadow: 0 24px 100px #14251c38; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
-.rf-dialog::backdrop { background: #17271d77; backdrop-filter: blur(3px); }
+.rf-dialog { position: fixed; inset: 0; width: 760px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 48px); margin: auto; padding: 0; overflow: auto; border: 1px solid var(--line); border-radius: 15px; color: var(--text); background: var(--surface); box-shadow: 0 24px 100px #20202038; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.rf-dialog::backdrop { background: #27273177; backdrop-filter: blur(3px); }
 .rf-dialog-content { min-width: 0; }
 .rf-header { display: flex; align-items: flex-start; gap: 15px; padding: 22px 26px; border-bottom: 1px solid var(--line); }
 .rf-heading-icon { display: grid; place-items: center; flex-shrink: 0; width: 45px; height: 45px; border: 1px solid color-mix(in srgb, var(--brand), transparent 80%); border-radius: 12px; background: var(--brand-soft); color: var(--brand); }

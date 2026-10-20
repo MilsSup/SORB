@@ -13,49 +13,48 @@ export const resourceGroups = [
 ];
 // Participants can be responsible for resources without being bookable specialists.
 export const demoParticipants = [
-  { id: 'anastasia', name: 'Анастасия Морозова' },
-  { id: 'anna', name: 'Анна Смирнова' },
-  { id: 'alexey', name: 'Алексей Волков' },
-  { id: 'maria', name: 'Мария Соколова' },
-  { id: 'elena', name: 'Елена Павлова' },
-  { id: 'dmitry', name: 'Дмитрий Ковалёв' },
+  { id: 'kseniya', name: 'Ксения Паздникова' },
+  { id: 'ekaterina', name: 'Екатерина Бородина' },
+  { id: 'vyacheslav', name: 'Вячеслав Черданцев' },
+  { id: 'nikita', name: 'Никита Пчелинцев' },
+  { id: 'adum', name: 'Адум Джидда' },
 ];
 
 // Fixed fixtures keep the visual prototype independent of the API and current date.
 export const demoResources: CalendarResource[] = [
   { id: 1, name: 'Студия «Свет»', meta: '60 м² · до 12 человек', icon: 'building', category: 'rooms', groupIds: ['shooting'], location: 'Медиацентр · 2 этаж, 201', events: [
-    { id: 1, title: 'Съёмка новой коллекции', owner: 'Анастасия М.', start: 10, duration: 2.5, tone: 'green', status: 'confirmed' },
-    { id: 2, title: 'Предметная съёмка', owner: 'Дмитрий К.', start: 14, duration: 3, tone: 'amber', status: 'pending' },
+    { id: 1, title: 'Съёмка новой коллекции', owner: 'Ксения П.', start: 10, duration: 2.5, tone: 'green', status: 'confirmed' },
+    { id: 2, title: 'Предметная съёмка', owner: 'Адум Д.', start: 14, duration: 3, tone: 'amber', status: 'pending' },
   ] },
   { id: 2, name: 'Переговорная «Лес»', meta: '24 м² · до 8 человек', icon: 'users', category: 'rooms', groupIds: ['meetings'], location: 'Медиацентр · 2 этаж, 203', events: [
-    { id: 3, title: 'Планёрка команды', owner: 'Мария С.', start: 9.5, duration: 1.5, tone: 'purple', status: 'confirmed' },
-    { id: 4, title: 'Встреча с клиентом', owner: 'Анастасия М.', start: 13, duration: 2, tone: 'green', status: 'confirmed' },
+    { id: 3, title: 'Планёрка команды', owner: 'Никита П.', start: 9.5, duration: 1.5, tone: 'purple', status: 'confirmed' },
+    { id: 4, title: 'Встреча с клиентом', owner: 'Ксения П.', start: 13, duration: 2, tone: 'green', status: 'confirmed' },
   ] },
   { id: 3, name: 'Камера Sony α7 IV', meta: 'Камера · комплект с оптикой', icon: 'camera', category: 'equipment', groupIds: ['shooting', 'portable'], location: 'Медиацентр · выдача в студии', roomId: 1, mobility: 'portable', events: [
-    { id: 1, title: 'Съёмка новой коллекции', owner: 'Анастасия М.', start: 10, duration: 2.5, tone: 'green', status: 'confirmed' },
-    { id: 5, title: 'Интервью с гостем', owner: 'Алексей В.', start: 15, duration: 2, tone: 'purple', status: 'confirmed' },
+    { id: 1, title: 'Съёмка новой коллекции', owner: 'Ксения П.', start: 10, duration: 2.5, tone: 'green', status: 'confirmed' },
+    { id: 5, title: 'Интервью с гостем', owner: 'Вячеслав Ч.', start: 15, duration: 2, tone: 'purple', status: 'confirmed' },
   ] },
   { id: 4, name: 'Проектор Epson', meta: 'Full HD · HDMI, USB-C', icon: 'monitor', category: 'equipment', groupIds: ['meetings'], location: 'Медиацентр · переговорная', roomId: 2, mobility: 'fixed', events: [
-    { id: 4, title: 'Встреча с клиентом', owner: 'Анастасия М.', start: 13, duration: 2, tone: 'green', status: 'confirmed' },
+    { id: 4, title: 'Встреча с клиентом', owner: 'Ксения П.', start: 13, duration: 2, tone: 'green', status: 'confirmed' },
     { id: 6, title: 'Обслуживание', owner: 'Плановая проверка', start: 16, duration: 3, tone: 'neutral', status: 'completed' },
   ] },
-  { id: 5, name: 'Мария Соколова', meta: 'Фотограф · портрет, предмет', icon: 'user', category: 'people', groupIds: ['shooting'], location: 'Съёмка в студии медиацентра', roomId: 1, serviceMode: 'office', workingHours: { from: 10, to: 18 }, events: [
-    { id: 1, title: 'Съёмка новой коллекции', owner: 'Анастасия М.', start: 10, duration: 2.5, tone: 'green', status: 'confirmed' },
-    { id: 2, title: 'Предметная съёмка', owner: 'Дмитрий К.', start: 14, duration: 3, tone: 'amber', status: 'pending' },
+  { id: 5, name: 'Никита Пчелинцев', meta: 'Фотограф · портрет, предмет', icon: 'user', category: 'people', groupIds: ['shooting'], location: 'Съёмка в студии медиацентра', roomId: 1, serviceMode: 'office', workingHours: { from: 10, to: 18 }, events: [
+    { id: 1, title: 'Съёмка новой коллекции', owner: 'Ксения П.', start: 10, duration: 2.5, tone: 'green', status: 'confirmed' },
+    { id: 2, title: 'Предметная съёмка', owner: 'Адум Д.', start: 14, duration: 3, tone: 'amber', status: 'pending' },
   ] },
-  { id: 6, name: 'Алексей Волков', meta: 'Звукорежиссёр · запись, монтаж', icon: 'mic', category: 'people', groupIds: ['shooting'], location: 'Запись в медиацентре · монтаж онлайн', serviceMode: 'hybrid', events: [
-    { id: 7, title: 'Запись подкаста', owner: 'Елена П.', start: 11, duration: 2, tone: 'purple', status: 'confirmed' },
-    { id: 5, title: 'Интервью с гостем', owner: 'Алексей В.', start: 15, duration: 2, tone: 'purple', status: 'confirmed' },
+  { id: 6, name: 'Вячеслав Черданцев', meta: 'Звукорежиссёр · запись, монтаж', icon: 'mic', category: 'people', groupIds: ['shooting'], location: 'Запись в медиацентре · монтаж онлайн', serviceMode: 'hybrid', events: [
+    { id: 7, title: 'Запись подкаста', owner: 'Екатерина Б.', start: 11, duration: 2, tone: 'purple', status: 'confirmed' },
+    { id: 5, title: 'Интервью с гостем', owner: 'Вячеслав Ч.', start: 15, duration: 2, tone: 'purple', status: 'confirmed' },
   ] },
   { id: 7, name: 'Циклорама', meta: 'Съёмочная зона · белый фон', icon: 'layers', category: 'zones', groupIds: ['shooting'], location: 'Медиацентр · студия «Свет»', roomId: 1, events: [
-    { id: 2, title: 'Предметная съёмка', owner: 'Дмитрий К.', start: 14, duration: 3, tone: 'amber', status: 'pending' },
+    { id: 2, title: 'Предметная съёмка', owner: 'Адум Д.', start: 14, duration: 3, tone: 'amber', status: 'pending' },
   ] },
 ];
 
 export function calendarCancellation(event: CalendarEvent): CancellationPreview {
   const time = (value: number) => `${String(Math.floor(value)).padStart(2, '0')}:${String(Math.round((value % 1) * 60)).padStart(2, '0')}`;
   const ids: Record<number, string> = { 1: 'БР-0128', 2: 'БР-0129', 4: 'БР-0136' };
-  return { id: ids[event.id] ?? `БР-${String(140 + event.id).padStart(4, '0')}`, title: event.title, date: '19 октября 2026', time: `${time(event.start)}–${time(event.start + event.duration)}`, resources: demoResources.filter(resource => resource.events.some(item => item.id === event.id)).map(resource => resource.name), own: event.owner === 'Анастасия М.', status: event.status };
+  return { id: ids[event.id] ?? `БР-${String(140 + event.id).padStart(4, '0')}`, title: event.title, date: '19 октября 2026', time: `${time(event.start)}–${time(event.start + event.duration)}`, resources: demoResources.filter(resource => resource.events.some(item => item.id === event.id)).map(resource => resource.name), own: event.owner === 'Ксения П.', status: event.status };
 }
 
 export const categories: { id: ResourceCategory | 'all'; label: string; icon: string; count: number }[] = [

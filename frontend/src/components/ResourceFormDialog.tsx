@@ -3,6 +3,8 @@ import type { ResourceCategory } from '../demo';
 import { demoParticipants, demoResources, resourceGroups } from '../demo';
 import { Icon } from '../ui';
 import './resource-form.css';
+import { TimeInput } from './TimeInput';
+import { isTimeRangeValid } from '../time-input';
 
 const resourceTypes: { value: ResourceCategory; label: string; icon: string }[] = [
   { value: 'rooms', label: 'Помещение', icon: 'building' },
@@ -27,6 +29,8 @@ export function ResourceFormDialog({ onClose }: { onClose: () => void }) {
   const [groupError, setGroupError] = useState('');
   const [approval, setApproval] = useState('responsible');
   const [schedule, setSchedule] = useState('organization');
+  const [availableFrom, setAvailableFrom] = useState('09:00');
+  const [availableUntil, setAvailableUntil] = useState('19:00');
   const [notice, setNotice] = useState('');
 
   useEffect(() => {
@@ -79,7 +83,7 @@ export function ResourceFormDialog({ onClose }: { onClose: () => void }) {
       <form onSubmit={event => {
         event.preventDefault();
         const values = new FormData(event.currentTarget);
-        if (schedule === 'custom' && (!values.getAll('days').length || String(values.get('availableFrom')) >= String(values.get('availableUntil')))) {
+        if (schedule === 'custom' && (!values.getAll('days').length || !isTimeRangeValid(availableFrom, availableUntil))) {
           setNotice('Проверьте график: выберите хотя бы один день и укажите окончание позже начала.');
           return;
         }
@@ -122,7 +126,7 @@ export function ResourceFormDialog({ onClose }: { onClose: () => void }) {
               {approval === 'responsible' && <label className="field rf-field">Ответственный<select name="responsible" defaultValue="" required><option value="" disabled>Выберите участника</option>{responsiblePeople.map(person => <option key={person.id} value={person.id}>{person.name}</option>)}</select></label>}
             </div>
             <label className="field rf-field">График доступности<select name="schedule" value={schedule} onChange={event => setSchedule(event.target.value)}><option value="organization">Как у организации · пн–пт, 09:00–19:00</option><option value="custom">Свой график</option></select></label>
-            {schedule === 'custom' && <div className="rf-custom-schedule"><fieldset className="rf-days"><legend>Дни недели</legend>{['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day, index) => <label key={day}><input type="checkbox" name="days" value={index} defaultChecked={index < 5} /><span>{day}</span></label>)}</fieldset><div className="rf-columns"><label className="field rf-field">С<input type="time" name="availableFrom" defaultValue="09:00" required /></label><label className="field rf-field">До<input type="time" name="availableUntil" defaultValue="19:00" required /></label></div></div>}
+            {schedule === 'custom' && <div className="rf-custom-schedule"><fieldset className="rf-days"><legend>Дни недели</legend>{['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day, index) => <label key={day}><input type="checkbox" name="days" value={index} defaultChecked={index < 5} /><span>{day}</span></label>)}</fieldset><div className="rf-columns"><TimeInput className="field rf-field" label="Начало доступности" name="availableFrom" value={availableFrom} onChange={setAvailableFrom} required /><TimeInput className="field rf-field" label="Окончание доступности" name="availableUntil" value={availableUntil} onChange={setAvailableUntil} after={availableFrom} required /></div></div>}
             <p className="rf-hint rf-timezone"><Icon name="clock" size={14} />Время организации · Барнаул, UTC+7</p>
           </section>
         </div>

@@ -5,6 +5,8 @@ import { categories, demoResources } from '../demo';
 import type { CalendarEvent, PreviewRole, ResourceCategory } from '../demo';
 import { Icon } from '../ui';
 import { formatTime, snapTime, timeAtPosition, TIMELINE_END, TIMELINE_START, TIME_STEP } from '../timeline';
+import { timeToMinutes } from '../time-input';
+import { TimeInput } from './TimeInput';
 
 type Props = { role: PreviewRole; onEvent: (event: CalendarEvent) => void; onInfo: (text: string) => void };
 type DragState = { kind: 'pan' | 'cursor'; pointerId: number; startX: number; scrollLeft: number; moved: boolean };
@@ -25,9 +27,8 @@ export function CalendarPage({ role, onEvent, onInfo }: Props) {
   const dragRef = useRef<DragState | null>(null);
   const suppressClick = useRef(false);
 
-  const parseTime = (value: string) => { const [hours, minutes] = value.split(':').map(Number); return hours + minutes / 60; };
-  const from = parseTime(availableFrom);
-  const to = parseTime(availableTo);
+  const from = (timeToMinutes(availableFrom) ?? NaN) / 60;
+  const to = (timeToMinutes(availableTo) ?? NaN) / 60;
   const validInterval = Number.isFinite(from) && Number.isFinite(to) && from >= 9 && to <= 19 && from < to;
   const filtered = demoResources.filter(resource => (category === 'all' || category === resource.category)
     && resource.name.toLocaleLowerCase('ru').includes(query.toLocaleLowerCase('ru'))
@@ -131,7 +132,7 @@ export function CalendarPage({ role, onEvent, onInfo }: Props) {
           <label className="resource-search"><Icon name="search" size={16} /><input aria-label="Поиск ресурса в календаре" value={query} onChange={event => setQuery(event.target.value)} placeholder="Найти ресурс" /></label>
           <div className="calendar-subtools"><span className="timezone">Барнаул · UTC+7</span><button className={`availability-button${filtersOpen ? ' selected' : ''}`} aria-label="Фильтры доступности" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(!filtersOpen)}><Icon name="filter" size={16} />Доступность{onlyAvailable && <span className="connection-dot" />}</button></div>
         </div>
-        {filtersOpen && <div className="calendar-filter-row availability-filter"><label className="availability-checkbox"><input type="checkbox" checked={onlyAvailable} onChange={event => setOnlyAvailable(event.target.checked)} />Свободны весь интервал</label><div className="availability-times"><label>С<input type="time" aria-label="Начало интервала доступности" min="09:00" max="19:00" step="900" value={availableFrom} onChange={event => setAvailableFrom(event.target.value)} /></label><label>До<input type="time" aria-label="Конец интервала доступности" min="09:00" max="19:00" step="900" value={availableTo} onChange={event => setAvailableTo(event.target.value)} /></label></div>{!validInterval && <p className="availability-error" role="alert">Окончание должно быть позже начала в пределах 09:00–19:00.</p>}{onlyAvailable && validInterval && <p className="availability-result" role="status">{availableFrom}–{availableTo}: свободно {filtered.length} из {demoResources.length} ресурсов.</p>}</div>}
+        {filtersOpen && <div className="calendar-filter-row availability-filter"><label className="availability-checkbox"><input type="checkbox" checked={onlyAvailable} onChange={event => setOnlyAvailable(event.target.checked)} />Свободны весь интервал</label><div className="availability-times"><TimeInput label="Начало интервала доступности" min="09:00" max="19:00" value={availableFrom} onChange={setAvailableFrom} required /><TimeInput label="Конец интервала доступности" min="09:00" max="19:00" after={availableFrom} value={availableTo} onChange={setAvailableTo} required /></div>{!validInterval && <p className="availability-error" role="alert">Окончание должно быть позже начала в пределах 09:00–19:00.</p>}{onlyAvailable && validInterval && <p className="availability-result" role="status">{availableFrom}–{availableTo}: свободно {filtered.length} из {demoResources.length} ресурсов.</p>}</div>}
         <div className={`timeline-scroll${panning ? ' is-panning' : ''}`} ref={scrollRef} onPointerDown={beginPan} onPointerMove={movePointer} onPointerUp={endPointer} onPointerCancel={cancelPointer} onLostPointerCapture={() => { if (dragRef.current) cancelPointer(); }} onKeyDownCapture={() => { suppressClick.current = false; }} onClickCapture={event => { if (suppressClick.current) { event.stopPropagation(); suppressClick.current = false; } }}>
           <div className="timeline" style={{ '--hour-pixels': `${zoomLevels[zoom]}px` } as CSSProperties}>
             <div className="timeline-heading"><div className="resource-column-heading">Ресурс <span>{filtered.length}</span></div><div className="hour-headings" ref={axisRef} onClick={event => { if (!dragRef.current && !suppressClick.current) selectAt(event.clientX); }}>{Array.from({ length: 10 }, (_, index) => <span key={index}>{formatTime(index + 9)}</span>)}</div></div>

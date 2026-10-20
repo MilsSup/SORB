@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Icon } from './ui';
+import { Brand } from './components/Brand';
 import { CalendarPage } from './components/CalendarPage';
 import { WorkspacePage } from './components/WorkspacePages';
 import { AccountPage } from './components/AccountPages';
@@ -80,7 +81,7 @@ export function App() {
     {sidebarOpen && <button className="sidebar-scrim" aria-label="Закрыть навигацию" onClick={closeSidebar} />}
     <aside id="main-sidebar" className={`app-sidebar${sidebarOpen ? ' open' : ''}`} onKeyDown={event => { if (event.key === 'Escape') closeSidebar(); }}>
       <Link className="brand" to="/calendar" aria-label="Резервика — календарь" onClick={closeSidebar}>
-        <span className="brand-logo" role="img" aria-label="Резервика" />
+        <Brand />
       </Link>
       <details className="organization-switcher">
         <summary><span className="organization-avatar"><Icon name="building" size={19} /></span><span><strong>Медиацентр «Среда»</strong><small>Организация</small></span><Icon name="chevron-down" size={15} /></summary>
@@ -93,7 +94,7 @@ export function App() {
       {isAdmin && <><span className="nav-label management-label">УПРАВЛЕНИЕ</span><nav className="sidebar-navigation" aria-label="Управление организацией">{management.map(item => <NavLink key={item.path} to={item.path} onClick={closeSidebar}><Icon name={item.icon} size={19} /><span>{item.label}</span></NavLink>)}</nav></>}
       <div className="sidebar-bottom">
         <div className="sidebar-utility"><button onClick={() => setDialog({ type: 'help' })}><Icon name="help" size={18} />Помощь</button><button className="theme-switch" aria-label={theme === 'light' ? 'Включить тёмную тему' : 'Включить светлую тему'} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}><Icon name={theme === 'light' ? 'moon' : 'sun'} size={18} /></button></div>
-        <Link className="sidebar-profile" to="/profile" onClick={closeSidebar}><span className="avatar profile-avatar">АМ</span><span><strong>Анастасия Морозова</strong><small>{roleLabels[role]}</small></span><Icon name="chevron-right" size={15} /></Link>
+        <Link className="sidebar-profile" to="/profile" onClick={closeSidebar}><span className="avatar profile-avatar">КП</span><span><strong>Ксения Паздникова</strong><small>{roleLabels[role]}</small></span><Icon name="chevron-right" size={15} /></Link>
       </div>
     </aside>
     <div className="app-workspace">
@@ -103,7 +104,7 @@ export function App() {
           <label className="role-picker"><Icon name="user" size={15} /><select aria-label="Роль просмотра" value={role} onChange={event => changeRole(event.target.value as PreviewRole)}><option value="admin">Администратор</option><option value="employee">Сотрудник</option><option value="responsible">Ответственный</option></select></label>
           <button className="icon-button" aria-label="Поиск по пространству" onClick={() => setDialog({ type: 'search' })}><Icon name="search" size={19} /></button>
           <button className="icon-button notification-button" aria-label={`Уведомления: новых — ${isAdmin ? 3 : canApprove ? 2 : 1}`} onClick={() => setDialog({ type: 'notifications' })}><Icon name="bell" size={19} /><span /></button>
-          <Link to="/profile" className="avatar topbar-avatar" aria-label="Профиль Анастасии Морозовой">АМ</Link>
+          <Link to="/profile" className="avatar topbar-avatar" aria-label="Профиль Ксении Паздниковой">КП</Link>
         </div>
       </header>
       <main id="main-content" className="main-content">
